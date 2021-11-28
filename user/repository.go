@@ -1,8 +1,6 @@
 package user
 
 import (
-	"fmt"
-
 	"gorm.io/gorm"
 )
 
@@ -46,8 +44,6 @@ func (r repository) FindById(ID int) (User, error) {
 	if err != nil {
 		return user, err
 	}
-
-	fmt.Println(ID, user.Name)
 
 	return user, nil
 }

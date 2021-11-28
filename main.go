@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bwa_golang/auth"
 	"bwa_golang/handler"
 	"bwa_golang/user"
 	"log"
@@ -20,10 +21,9 @@ func main() {
 
 	userRepository := user.NewRepository(db)
 	userService := user.NewService(userRepository)
+	authService := auth.NewService()
 
-	userService.UploadAvatar(1, "images/coba.png")
-
-	userHandler := handler.NewUserHandler(userService)
+	userHandler := handler.NewUserHandler(userService, authService)
 
 	router := gin.Default()
 	api := router.Group("api/v1")
