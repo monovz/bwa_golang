@@ -2,9 +2,11 @@ package main
 
 import (
 	"bwa_golang/auth"
+	"bwa_golang/campaign"
 	"bwa_golang/handler"
 	"bwa_golang/helper"
 	"bwa_golang/user"
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
@@ -24,6 +26,12 @@ func main() {
 	}
 
 	userRepository := user.NewRepository(db)
+	campaignRepository := campaign.NewRepository(db)
+
+	campaigns, err := campaignRepository.FindAll()
+
+	fmt.Println(campaigns)
+
 	userService := user.NewService(userRepository)
 	authService := auth.NewService()
 
