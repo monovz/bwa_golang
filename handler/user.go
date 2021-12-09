@@ -51,7 +51,7 @@ func (h *userHandler) RegisterUser(c *gin.Context) {
 
 	response := helper.APIResponse("Account has been registered", http.StatusCreated, "success", formattedUser)
 
-	c.JSON(http.StatusOK, response)
+	c.JSON(http.StatusCreated, response)
 }
 
 func (h *userHandler) Login(c *gin.Context) {
