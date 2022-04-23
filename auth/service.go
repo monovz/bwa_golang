@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"bwa_golang/helper"
 	"errors"
 
 	"github.com/dgrijalva/jwt-go"
@@ -19,7 +20,7 @@ func NewService() *authService {
 }
 
 // temporary store, soon will be stored safely
-var SECRET_KEY = []byte("")
+var SECRET_KEY = []byte(helper.GoDotEnvVariable("TOKEN_SECRET_KEY"))
 
 func (s *authService) GenerateToken(userID int) (string, error) {
 	payload := jwt.MapClaims{}

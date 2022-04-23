@@ -1,6 +1,7 @@
 package payment
 
 import (
+	"bwa_golang/helper"
 	"bwa_golang/user"
 	"strconv"
 
@@ -20,8 +21,8 @@ func NewService() *service {
 
 func (s *service) GetPaymentURL(transaction Transaction, user user.User) (string, error) {
 	midclient := midtrans.NewClient()
-	midclient.ServerKey = ""
-	midclient.ClientKey = ""
+	midclient.ServerKey = helper.GoDotEnvVariable("MIDTRANS_SERVER_KEY")
+	midclient.ClientKey = helper.GoDotEnvVariable("MIDTRANS_CLIENT_KEY")
 	midclient.APIEnvType = midtrans.Sandbox
 
 	snapGateway := midtrans.SnapGateway{
