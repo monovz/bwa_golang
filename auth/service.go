@@ -19,7 +19,7 @@ func NewService() *authService {
 }
 
 // temporary store, soon will be stored safely
-var SECRET_KEY = []byte("BWAGOLANG_s3cr3t_k3y")
+var SECRET_KEY = []byte("")
 
 func (s *authService) GenerateToken(userID int) (string, error) {
 	payload := jwt.MapClaims{}
